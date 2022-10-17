@@ -1,0 +1,35 @@
+import React from "react";
+import { BrowserRouter as Router, Link, Route, Routes } from "react-router-dom";
+import About from "../screens/about";
+import Contact from "../screens/contact";
+import Dashboard from "../screens/dashboard";
+import AllData from "../screens/dashboard_screens/data";
+import Home from "../screens/home";
+import NotFound from "../screens/notfound";
+import Profile from "../screens/profile";
+import Service from "../screens/srevices";
+
+export default function AppRouter() {
+  return (
+    <Router>
+        <div>
+            <Link to='/'>Home</Link>
+            <Link to='about'>About</Link>
+            <Link to='contact'>Contact</Link>
+            <Link to='service'>Service</Link>
+            <Link to='dashboard'>Dashboard</Link>
+            <Link to='data'>Data</Link>
+        </div>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="contact" element={<Contact />} />
+        <Route path="service" element={<Service />} />
+        <Route path="about" element={<About />} />
+        <Route path="data" element={<AllData />} />
+        <Route path="profile/:userName" element={<Profile />} />
+        <Route path="dashboard/*" element={<Dashboard />} />
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+    </Router>
+  );
+}
